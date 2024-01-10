@@ -2,7 +2,8 @@
 @section('content')
     <section>
         <div class="container">
-            <h1>Projects Index</h1>
+            <h1 class="mb-4">Projects Index</h1>
+            <a href="{{ route('admin.projects.create') }}" class="btn btn-primary mb-3">NEW PROJECT</a>
             <table class="table">
                 <thead>
                     <tr>
