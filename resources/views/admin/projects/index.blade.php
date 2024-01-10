@@ -2,6 +2,11 @@
 @section('content')
     <section>
         <div class="container">
+            @if (session('success'))
+                <div class="alert alert-danger">
+                    {{ session('success') }}
+                </div>
+            @endif
             <h1 class="mb-4">Projects Index</h1>
             <a href="{{ route('admin.projects.create') }}" class="btn btn-primary mb-3">NEW PROJECT</a>
             <table class="table">
