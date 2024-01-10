@@ -32,8 +32,8 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
-        $request['slug'] = Str::slug($request->title, '-');
-        $data = $request->all();
+        $data = $request->validated();
+        $data['slug'] = Str::slug($data['title'], '-');
         $project = Project::create($data);
         return redirect()->route('admin.projects.show', $project);
     }
@@ -51,7 +51,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        return view('admin.projects.edit', compact('project'));
     }
 
     /**
@@ -59,7 +59,10 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
-        //
+        $data = $request->validated();
+        $data['slug'] = Str::slug($data['title'], '-');
+        $project->update($data);
+        return redirect()->route('admin.projects.show', $project)->with('success', 'Updated successfully');
     }
 
     /**

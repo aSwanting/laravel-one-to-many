@@ -8,11 +8,12 @@
                 @csrf
                 <div class="mb-3">
                     <label for="title" class="form-label">Project Title</label>
-                    <input type="text" class="form-control" name="title" id="title">
+                    <input type="text" class="form-control" name="title" id="title" value="{{ old('title') }}">
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label">Project Description</label>
-                    <input type="text" class="form-control" name="description" id="description">
+                    <input type="text" class="form-control" name="description" id="description"
+                        value="{{ old('description') }}">
                 </div>
                 <button type="submit" class="btn btn-primary me-3">Create Project</button>
                 <a href="{{ route('admin.projects.index') }}" class="btn btn-secondary">Back to Index</a>
