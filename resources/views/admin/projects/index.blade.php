@@ -15,8 +15,8 @@
                         <th>ID</th>
                         <th>Title</th>
                         <th>Slug</th>
+                        <th>Type</th>
                         <th>Description</th>
-                        <th></th>
                         <th></th>
                     </tr>
                 </thead>
@@ -30,6 +30,8 @@
                                 </a>
                             </td>
                             <td>{{ $project->slug }}</td>
+                            <td>{{ isset($project->type) ? $project->type->name : '-' }}</td>
+                            {{-- <td>{{ optional($project->type)->name }}</td> --}}
                             <td>{{ $project->description }}</td>
                             <td>
                                 <a class="btn btn-sm btn-success" href="{{ route('admin.projects.edit', $project) }}">edit</a>

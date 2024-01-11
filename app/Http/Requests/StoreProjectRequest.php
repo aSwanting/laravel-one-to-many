@@ -27,7 +27,8 @@ class StoreProjectRequest extends FormRequest
         return [
             'title' => 'required|max:255|min:3',
             'slug' => Rule::unique('projects', 'slug'),
-            'description' => 'max:300'
+            'description' => 'max:300',
+            'type_id' => 'exists:types,id'
         ];
     }
 
