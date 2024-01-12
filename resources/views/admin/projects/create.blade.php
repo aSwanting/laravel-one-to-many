@@ -17,15 +17,14 @@
                     <select name="type_id" id="type_id" class="form-select">
                         <option value="">Type</option>
                         @foreach ($types as $type)
-                            <option @selected(old('type_id') === $type->id) value="{{ $type->id }}">{{ $type->name }}</option>
+                            <option @selected(old('type_id') == $type->id) value="{{ $type->id }}">{{ $type->name }}</option>
                         @endforeach
                     </select>
                 </div>
 
                 <div class="mb-3">
                     <label for="description" class="form-label">Project Description</label>
-                    <textarea type="text" class="form-control" name="description" id="description" value="{{ old('description') }}">
-                    </textarea>
+                    <textarea type="text" class="form-control" name="description" id="description">{{ old('description') }}</textarea>
                 </div>
 
                 <button type="submit" class="btn btn-primary me-3">Create Project</button>

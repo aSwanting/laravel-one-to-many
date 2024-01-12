@@ -3,7 +3,6 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 use Illuminate\Support\Str;
 use App\Models\Project;
 
@@ -26,9 +25,9 @@ class StoreProjectRequest extends FormRequest
     {
         return [
             'title' => 'required|max:255|min:3',
-            'slug' => Rule::unique('projects', 'slug'),
+            'slug' => 'unique:projects',
             'description' => 'max:300',
-            'type_id' => 'exists:types,id'
+            'type_id' => 'nullable|exists:types,id'
         ];
     }
 

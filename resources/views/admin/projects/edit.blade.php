@@ -7,16 +7,28 @@
             <form class="mb-3" action="{{ route('admin.projects.update', $project) }}" method="POST">
                 @csrf
                 @method('PUT')
+
                 <div class="mb-3">
                     <label for="title" class="form-label">Project Title</label>
                     <input type="text" class="form-control" name="title" id="title"
                         value="{{ old('title', $project->title) }}">
                 </div>
+
+                <div class="mb-3">
+                    <label for="type_id" class="form-label">Project Type</label>
+                    <select name="type_id" id="type_id" class="form-select">
+                        <option value="">Type</option>
+                        @foreach ($types as $type)
+                            <option @selected(old('type_id', optional($project->type)->id) == $type->id) value="{{ $type->id }}">{{ $type->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
                 <div class="mb-3">
                     <label for="description" class="form-label">Project Description</label>
-                    <input type="text" class="form-control" name="description" id="description"
-                        value="{{ old('description', $project->description) }}">
+                    <textarea type="text" class="form-control" name="description" id="description">{{ old('description') }}</textarea>
                 </div>
+
                 <button type="submit" class="btn btn-primary">Submit</button>
                 <a href="{{ url()->previous() }}" class="btn btn-danger">Cancel</a>
                 <a href="{{ route('admin.projects.index') }}" class="btn btn-secondary">Back to index</a>
