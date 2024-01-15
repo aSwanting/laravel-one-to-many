@@ -16,8 +16,8 @@
                         <th>Title</th>
                         <th>Slug</th>
                         <th>Type</th>
+                        <th>Technologies</th>
                         <th>Description</th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,6 +32,15 @@
                             <td>{{ $project->slug }}</td>
                             <td>{{ isset($project->type) ? $project->type->name : '-' }}</td>
                             {{-- <td>{{ optional($project->type)->name }}</td> --}}
+                            <td>
+
+                                @forelse ($project->technologies as $technology)
+                                    <span class="badge rounded-pill text-bg-primary"> {{ $technology->name }}</span>
+                                @empty
+                                    -
+                                @endforelse
+
+                            </td>
                             <td>{{ $project->description }}</td>
                             <td>
                                 <a class="btn btn-sm btn-success" href="{{ route('admin.projects.edit', $project) }}">edit</a>
